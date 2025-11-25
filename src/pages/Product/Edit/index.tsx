@@ -40,7 +40,7 @@ export default function Form() {
 			setSale(data);
 		} catch (err) {
 			console.error(err);
-			alert("Erro ao carregar a venda");
+			alert("Erro ao carregar");
 		}
 	};
 
@@ -57,19 +57,19 @@ export default function Form() {
 			};
 
 			if (id) {
-				// Atualiza venda existente
+				// Atualiza  existente
 				await api.put(`/sale/${id}`, payload);
-				alert("Venda atualizada com sucesso!");
+				alert("atualizada com sucesso!");
 			} else {
-				// Cria nova venda
+				// Cria nova
 				await api.post("/sale", payload);
-				alert("Venda criada com sucesso!");
+				alert("Produto criado com sucesso!");
 			}
 
 			navigate("/sales");
 		} catch (err) {
 			console.error(err);
-			alert("Erro ao salvar a venda");
+			alert("Erro ao salvar");
 		}
 	};
 
@@ -78,8 +78,8 @@ export default function Form() {
 			{/* Header */}
 			<div className="header-page row">
 				<div className="col-3">
-					<h2 className="title-page">{id ? "Editar Venda" : "Nova Venda"}</h2>
-					<p className="url-page">Dashboard / Venda</p>
+					<h2 className="title-page">{id ? "Editar Produto" : "Novo Produto"}</h2>
+					<p className="url-page">Dashboard / Produto</p>
 				</div>
 				<div className="col-9 d-flex justify-content-end gap-2">
 					<button onClick={handleSave} className="btn btn-info">
@@ -97,7 +97,7 @@ export default function Form() {
 					<div className="card user">
 						<div className="card-body">
 							<div className="row" >
-							<h5 className="mb-3">Atividades da venda</h5>
+							<h5 className="mb-3">Atividades do Produto</h5>
 
 							{/* Cliente */}
 								<div className="col-6 mb-3">
@@ -123,8 +123,8 @@ export default function Form() {
                                     handleChange("clienteId", Number(e.target.value))
                                 }
                             >
-                                <option value={0}>Tipo de Venda</option>
-                                <option value={1}>Balcão</option>
+                                <option value={0}>Tipo de Produto</option>
+                                <option value={1}>B</option>
                                 <option value={2}>Comanda</option>
                             </select>
                         </div>

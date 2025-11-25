@@ -17,15 +17,15 @@ export default function Sales() {
 	const [sales, setSales] = useState<SaleType[]>([]);
 	const [loading, setLoading] = useState(true);
 
-	// Carrega a lista de vendas
+	// Carrega a lista de Produtos
 	const load = async () => {
 		try {
 			setLoading(true);
-			const response = await api.get("/sales");
+			const response = await api.get("/products");
 			setSales(response.data);
 		} catch (err) {
-			console.error("Erro ao carregar Vendas:", err);
-			alert("Erro ao carregar vendas");
+			console.error("Erro ao carregar:", err);
+			alert("Erro ao carregar");
 		} finally {
 			setLoading(false);
 		}
@@ -35,17 +35,17 @@ export default function Sales() {
 		load();
 	}, []);
 
-	// Deletar venda
+	// Deletar
 	const handleDelete = async (id: number) => {
-		if (!window.confirm("Deseja realmente deletar esta venda?")) return;
+		if (!window.confirm("Deseja realmente deletar este Produto ?")) return;
 
 		try {
 			await api.delete(`/sale/${id}`);
-			alert("Venda deletada com sucesso!");
+			alert("deletada com sucesso!");
 			setSales((prev) => prev.filter((s) => s.id !== id));
 		} catch (err) {
 			console.error(err);
-			alert("Erro ao deletar venda");
+			alert("Erro ao deletar");
 		}
 	};
 
@@ -53,7 +53,7 @@ export default function Sales() {
 		return (
 			<div className="text-center mt-4">
 				<div className="spinner-border text-info" role="status"></div>
-				<p>Carregando Vendas...</p>
+				<p>Carregando Produtos...</p>
 			</div>
 		);
 
@@ -62,8 +62,8 @@ export default function Sales() {
 			{/* Cabeçalho da página */}
 			<div className="header-page row">
 				<div className="col-3">
-					<h2 className="title-page">Vendas</h2>
-					<p className="url-page">Dashboard / Vendas</p>
+					<h2 className="title-page">Produtos</h2>
+					<p className="url-page">Dashboard / Produtos</p>
 				</div>
 				<div className="col-9 d-flex justify-content-end gap-2">
 					<NavLink
@@ -76,10 +76,10 @@ export default function Sales() {
 				</div>
 			</div>
 
-			{/* Lista de vendas */}
+			{/* Lista de Produtos */}
 			<div className="row mt-3">
 				{sales.length === 0 && (
-					<p className="text-center text-muted mt-3">Nenhuma venda encontrada.</p>
+					<p className="text-center text-muted mt-3">Nenhuma item encontrado.</p>
 				)}
 
 				{sales.map((sale) => (
@@ -89,7 +89,7 @@ export default function Sales() {
 					>
 						<div className="card h-100 rounded-4 shadow-sm">
 							<div className="m-3">
-								<h5 className="card-title">Venda #{sale.id}</h5>
+								<h5 className="card-title">Produto #{sale.id}</h5>
 								<p className="card-text text-muted mb-2">
 									<b>Cliente ID:</b> {sale.clienteId}
 								</p>
