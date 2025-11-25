@@ -1,0 +1,17 @@
+.country{
+    margin-top: 20px!important;
+}
+.country-item{
+    margin-top: 5px;
+    padding: 0px 40px;
+}
+.country-name{
+    color: #252527;
+    float: left;
+    font-weight: bold;
+    font-size: 12px;
+}
+.country-value{
+    color: #252527;
+    font-size: 12px;
+}

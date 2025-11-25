@@ -1,0 +1,33 @@
+.badge {
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.bg-label-success {
+    background-color: #4CAF50;
+    color: white;
+}
+.bg-label-error {
+    background-color: #F44336;
+    color: white;
+}
+.bg-label-warning {
+    background-color: #FFC107;
+    color: white;
+}
+.bg-label-open {
+    background-color: #FFC107;
+    color: white;
+}
+.bg-label-default {
+    background-color: #9E9E9E;
+    color: white;
+}

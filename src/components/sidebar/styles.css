@@ -1,0 +1,129 @@
+.pc-sidebar {
+  background: var(--pc-sidebar-background);
+  width: 264px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 1026;
+  display: block;
+  padding: 0;
+  transition: width 0.3s ease;
+  /*border-right: 1px solid var(--pc-sidebar-border-color);*/
+  /*box-shadow: 0 .125rem .375rem #a1acb81f;*/
+  /*margin: 10px;*/
+  /*border-radius: 10px;*/
+}
+
+@media (max-width: 1024px) {
+  .pc-sidebar {
+    width: 100px;
+    transition: width 0.3s ease;
+  }
+  .pc-link{
+    width: 45px;
+    height: 45px;
+  }
+  .pc-mtext{
+    display: none!important;
+    background: red;
+  }
+  .pc-title-section{
+    display: none;
+  }
+  .pc-link.menu-toggle{
+    display: none!important;
+  }
+  .b-brand span{
+    display: none!important;
+  }
+
+}
+
+.pc-sidebar .m-header {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  padding: 20px 20px;
+  /*background: var(--pc-brand-background);*/
+}
+.b-brand{
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: bolder;
+  font-size: 24px;
+  padding: 10px 10px;
+}
+.b-brand svg{
+  margin-top: -7px;
+  margin-right: 5px;
+  font-size: 37px;
+  color: var(--secundary-color);
+}
+
+.pc-sidebar .pc-navbar{
+  margin: 0 15px;
+}
+
+.pc-sidebar .pc-navbar .pc-item {
+  margin: 10px 10px;
+}
+
+.pc-sidebar .pc-link {
+  display: block;
+  padding: 5px 10px;
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.pc-sidebar .pc-link svg{
+  color: var(--secundary-color);
+}
+
+.pc-sidebar .pc-link.active {
+  background: var(--secundary-color);
+  color: white;
+}
+.pc-sidebar .pc-link.active svg{
+  color: white;
+}
+.pc-sidebar ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.pc-micon {
+  display: inline-block;
+  float: left;
+  font-size: 18px;
+  margin:0px 5px;
+}
+
+.pc-mtext {
+  margin:5px 15px;
+}
+
+.pc-title-section{
+  text-transform: uppercase;
+  font-size: 11px;
+  color: #686767;
+}
+
+.menu-sub{
+  /*margin-left: 20px;*/
+}
+
+.menu-sub .menu-link {
+  display: block;
+  color: var(--pc-sidebar-color);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.menu-sub .menu-link.active {
+  background: var(--pc-sidebar-main-active-color);
+  color: var(--pc-sidebar-active-color);
+}

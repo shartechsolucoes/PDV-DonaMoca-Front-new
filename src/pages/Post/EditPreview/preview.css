@@ -1,0 +1,13 @@
+.preview textarea, .preview h1{
+    font-size: 28px;
+    background: none!important;
+    border: none!important;
+    border: none!important;
+    padding: 0!important;
+    font-weight: bold;
+    line-height: normal;
+}
+
+.preview textarea.sub-title{
+    font-size: 18px;
+}

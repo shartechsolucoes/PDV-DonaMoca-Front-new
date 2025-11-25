@@ -1,0 +1,19 @@
+.categories{
+    padding: 0;
+    margin: 0;
+}
+
+.categories input{
+    margin: 2px;
+    appearance: auto;
+}
+.categories label{
+    margin-left: 5px;
+}
+
+input[type=checkbox]{
+    appearance: auto;
+    width: auto!important;
+    margin-top: 7px!important;
+}
+

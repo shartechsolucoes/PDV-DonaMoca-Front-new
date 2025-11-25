@@ -1,0 +1,9 @@
+.input-group .btn.button-url {
+    border-radius: 0px 5px 5px 0px!important;
+    padding: 10px!important;
+    margin: 0 !important;
+    background: white;
+    border: 1px solid #e1dddd;
+    color: var(--secundary-color);
+    font-size: 12px;
+}

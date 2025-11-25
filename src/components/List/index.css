@@ -1,0 +1,13 @@
+input[type='checkbox']{
+    margin: 39px;
+    position: absolute;
+}
+table{
+    background: none;
+}
+
+table tbody tr{
+    /*margin: 10px!important;*/
+    background: none!important;
+    padding: 10px;
+}

@@ -1,0 +1,50 @@
+.pc-header {
+  background: var(--bs-body-bg);
+  color: var(--pc-header-color);
+  min-height: 70px;
+  /*box-shadow: var(--pc-header-shadow);*/
+  /*-webkit-backdrop-filter: blur(7px);*/
+  /*backdrop-filter: blur(7px);*/
+  position: fixed;
+  left: 264px;
+  right: 0;
+  z-index: 1025;
+  padding:0 20px;
+}
+@media (max-width: 1024px) {
+  .pc-header {
+    left: 100px!important;
+    transition: width 0.3s ease;
+  }
+}
+.avatar {
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  margin-left: 20px;
+  padding: 4px;
+  color:var(--primary-color);
+}
+
+.dropdown-user a::after {
+  right: 0 !important;
+  position: absolute;
+}
+
+.dropdown-user .drop-menu{
+  position: fixed;
+  right: 10px !important;
+}
+
+.hellow {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-left: 15px;
+}
+
+.layout-menu-toggle{
+  margin-top: 10px;
+  width: 40px;
+  float: left;
+}

@@ -1,0 +1,24 @@
+.pagination-button-size {
+  width: 35px;
+  height: 36px;
+}
+
+.pagination {
+  display: flex;
+  justify-self: center;
+  margin-bottom: 0;
+}
+
+@media (width < 768px) {
+  .pagination {
+    margin-top: 12px;
+  }
+
+  .dt-info {
+    justify-self: center;
+  }
+
+  .pagination-container {
+    flex-direction: column-reverse;
+  }
+}

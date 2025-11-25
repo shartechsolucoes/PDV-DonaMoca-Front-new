@@ -1,0 +1,19 @@
+.fc-col-header-cell{
+  font-size: 20px;
+  padding: 10px !important;
+}
+
+.fc-day{
+  background: white;
+}
+.fc-day-today{
+  background: var(--color-primary) !important;
+}
+.fc-day-today .fc-daygrid-day-number{
+  color: white !important;
+}
+.fc-daygrid-day-number{
+  color: var(--color-primary) !important;
+  font-size: 20px;
+  margin:10px 20px;
+}

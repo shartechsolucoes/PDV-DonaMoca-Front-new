@@ -1,0 +1,14 @@
+.open{
+  background-image: -webkit-linear-gradient(140deg, #17ad37, #98ec2d);
+  background-image: linear-gradient(310deg, #17ad37, #98ec2d);
+}
+
+.in-work{
+  background-image: -webkit-linear-gradient(140deg, #ad3f17, #ec702d);
+  background-image: linear-gradient(310deg, #ad3f17, #ec702d);
+}
+
+.finished{
+  background-image: -webkit-linear-gradient(140deg, #21d4fd, #2152ff);
+  background-image: linear-gradient(310deg, #21d4fd, #2152ff);
+}

@@ -1,0 +1,7 @@
+.bg-radial{
+  background: radial-gradient(var(--color-secundary), var(--color-primary));
+}
+
+.bg-radial h3{
+  color: white;
+}

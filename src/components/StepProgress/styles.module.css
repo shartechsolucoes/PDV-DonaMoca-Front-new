@@ -1,0 +1,66 @@
+.stepContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.stepWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+.circleLineContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  justify-content: center;
+}
+
+.stepCircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #e6f7ff;
+  color: #00cfff;
+  border: 2px solid #00cfff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.active {
+  background-color: white;
+  color: #00cfff;
+}
+
+.stepLine {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: -50%;
+  height: 2px;
+  background-color: #ccc;
+  z-index: 0;
+}
+
+.stepLabel {
+  margin-top: 8px;
+  color: #002b45;
+  font-weight: 600;
+  text-align: center;
+}
+
+.completed {
+  background-color: #00cfff;
+  color: white;
+  border: none;
+}

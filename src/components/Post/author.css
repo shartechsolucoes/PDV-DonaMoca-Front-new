@@ -1,0 +1,25 @@
+.author span{
+    color: var(--secundary-color);
+    font-size: 13px;
+    font-weight: 600;
+}
+.author img{
+    border-radius: 50%;
+    width: 23px;
+    margin-right: 7px;
+    border: 2px solid #dcd9d9;
+}
+.author-select select {
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.selected-author img.author-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+

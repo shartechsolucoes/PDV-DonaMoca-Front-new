@@ -1,0 +1,47 @@
+.agenda table {
+    width: 100%;
+    margin-bottom: 40px;
+    padding: 0;
+}
+.agenda table thead th{
+    color: var(--color-primary);
+    font-weight: 800;
+}
+.agenda table thead th, .agenda table tbody td {
+    width: 14%;
+    text-align: center;
+    padding:7px 0px;
+}
+
+.agenda table thead th.active{
+    background: var(--color-primary);
+    border-radius: 20px 20px 0 0;
+    color: #fff;
+}
+.agenda table tbody td.active {
+    background: var(--color-primary);
+    border-radius:0 0 20px 20px;
+    color: #fff;
+}
+
+.agenda ul{
+    margin: 0;
+    padding: 0;
+}
+.agenda ul li{
+    border-left: 4px solid var(--color-primary);
+    margin-bottom: 10px;
+    list-style-type: none;
+}
+.agenda ul li h4{
+    margin: 0;
+    margin-left: 5px;
+    font-size: 15px;
+    padding: 0;
+}
+.agenda ul li span{
+    margin: 0;
+    padding: 0;
+    margin-left: 5px;
+    font-size: 12px;
+}

@@ -1,0 +1,20 @@
+.table-header{
+    background: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: bolder;
+}
+
+.table-body{
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: bolder;
+}
+.card.categories.active{
+    border-left: 5px solid #288fc6;
+}
+.card.categories.inactive{
+    border-left: 5px solid #828280;
+}

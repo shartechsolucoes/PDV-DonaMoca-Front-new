@@ -1,0 +1,33 @@
+.card.user .avatar-user{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: var(--secundary-color);
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    align-content: center;
+    margin-right:20px ;
+    border-radius: 7px;
+}
+.card.user .avatar-user{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: var(--secundary-color);
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    align-content: center;
+    margin-right:20px ;
+    border-radius: 7px;
+}
+.card.user .title{
+    font-size: 17px;
+    color: #636363;
+    font-weight: bold;
+}
+.card.user p{
+    font-size: 13px;
+    color: #636363;
+}

@@ -1,0 +1,22 @@
+.pin-label {
+  background-color: #4285F4;
+  border: 1px solid #f8f8f8;
+  border-radius: 8px;
+  color: #FFFFFF!important;
+  font-size: 11px!important;
+  padding: 9px 12px;
+  position: relative;
+}
+
+.pin-label::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, 0);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #4285F4;
+}

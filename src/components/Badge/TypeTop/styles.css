@@ -1,0 +1,29 @@
+.badge {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.top-label-supplier{
+    background-color: white;
+    border:1px solid #55a555;
+    color: #55a555 !important;
+}
+.top-label-industry {
+    background-color: #ffffff;
+    border:1px solid #5268ed;
+    color: #5268ed !important;
+}
+
+.top-label-default{
+    background-color: #9E9E9E;
+    border-color: #8dda8d;
+    color: white;
+}

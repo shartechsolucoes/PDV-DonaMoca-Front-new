@@ -1,0 +1,73 @@
+.pin-label {
+  background-color: #4285F4;
+  border: 1px solid #f8f8f8;
+  border-radius: 8px;
+  color: #FFFFFF!important;
+  font-size: 11px!important;
+  padding: 9px 12px;
+  position: relative;
+}
+
+.pin-label::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, 0);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #4285F4;
+}
+
+.post-card{
+  background: #f1f4f6;
+  height: 200px;
+  border-radius: 7px;
+  margin-top: 10px;
+}
+
+.post-list-title{
+  font-size: 18px;
+  padding: 0;
+  margin: 0;
+  font-weight: 600;
+  color: #525b69;
+}
+.post-list-subtitle{
+  padding: 0;
+  margin: -4px 0 2px 0;
+  font-size: 11px;
+  font-weight: 600;
+  color: #525b69;
+}
+
+.post-date{
+  padding: 0;
+  margin: 0;
+  font-size: 11px;
+  color: #525b69;
+}
+.recharts-wrapper{
+  background: #f1f4f6;
+  border-radius: 7px;
+  padding: 5px 0;
+}
+
+.icons, .date{
+  font-size: 12px;
+  font-weight: bold;
+  color: #288fc6;
+  margin-right: 5px;
+}
+.icons svg, .date svg{
+  padding: 1px;
+  font-size: 20px;
+  margin: 3px 0 4px 0;
+  margin-right: 5px;
+}
+
+.url-midia{
+  border-radius: 5px 0px 0px 5px!important;
+}

@@ -1,0 +1,9 @@
+input[type='checkbox']{
+    margin: 39px;
+    position: absolute;
+}
+
+dialog.modal-pei{
+    border:10px !important;
+    max-width: 900px;
+}

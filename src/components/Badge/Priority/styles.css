@@ -1,0 +1,33 @@
+.badge {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s ease-in-out;
+}
+.bg-label-low {
+    background-color: #8ac149;
+    color: white;
+}
+.bg-label-medium {
+    background-color: #e5be11;
+    color: white;
+}
+.bg-label-high {
+    background-color: #fd9800;
+    color: black;
+}
+.bg-label-urgent {
+    background-color: #d64215;
+    color: black;
+}
+.bg-label-analysis {
+    background-color: #bcbcbc;
+    color: black;
+}
+

@@ -1,0 +1,6 @@
+.card-body{
+    margin: 0!important;
+}
+.card-body .card-image img{
+    border-radius: 7px;
+}

@@ -1,0 +1,35 @@
+.badge {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.bg-label-approved {
+    background-color: #8dda8d;
+    color: white;
+}
+.bg-label-pending {
+    background-color: #838381;
+    color: white;
+}
+
+.bg-label-disapproved {
+    background-color: #ef7d7d;
+    color: white;
+}
+.bg-label-waiting {
+    background-color: #fbd476;
+    color: white;
+}
+
+.bg-label-default{
+    background-color: #9E9E9E;
+    color: white;
+}

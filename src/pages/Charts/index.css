@@ -1,0 +1,14 @@
+.table-header{
+    background: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: bolder;
+}
+
+.table-body{
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: bolder;
+}
