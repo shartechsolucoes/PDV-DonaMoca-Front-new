@@ -3,70 +3,66 @@ import { useParams, useNavigate, NavLink } from "react-router-dom";
 import { api } from "../../../api";
 import "./user.css";
 
-type SaleType = {
+type Type = {
 	id: number;
-	clienteId: number;
-	createAt: string;
-	updateAt: string;
-	deleteAt: string;
+	cod: number;
+	name: string;
+	type: number;
+	value: string;
+	description: string;
 	obs: string;
-	paymentMethod: number
-	};
+	cost: string;
+	status?: number;
+};
 
 export default function Form() {
 	const navigate = useNavigate();
 	const { id } = useParams<{ id?: string }>();
 
-	const [sale, setSale] = useState<SaleType>({
+	const [product, setProduct] = useState<Type>({
 		id: 0,
-		clienteId: 0,
-		createAt: "",
-		updateAt: "",
-		deleteAt: "",
+		cod: 0,
+		name: "",
+		type: 0,
+		value: "",
+		description: "",
 		obs: "",
-		paymentMethod:0,
+		cost: "",
+		status: 0
 	});
 
 	// Carrega dados se estiver em modo edição
 	useEffect(() => {
 		if (id) {
-			loadSale();
+			loadProduct();
 		}
 	}, [id]);
 
-	const loadSale = async () => {
+	const loadProduct = async () => {
 		try {
-			const { data } = await api.get(`/sale/${id}`);
-			setSale(data);
+			const { data } = await api.get(`/product/${id}`);
+			setProduct(data);
 		} catch (err) {
 			console.error(err);
 			alert("Erro ao carregar");
 		}
 	};
 
-	const handleChange = (field: keyof SaleType, value: string | number) => {
-		setSale((prev) => ({ ...prev, [field]: value }));
+	const handleChange = (field: keyof Type, value: string | number) => {
+		setProduct((prev) => ({ ...prev, [field]: value }));
 	};
 
 	const handleSave = async () => {
 		try {
-			const payload = {
-				idCliente: sale.clienteId,
-				obs: sale.obs,
-				paymentMethod: sale.paymentMethod
-			};
-
 			if (id) {
-				// Atualiza  existente
-				await api.put(`/sale/${id}`, payload);
-				alert("atualizada com sucesso!");
+				await api.put(`/product/${id}`, product);
+				alert("Atualizada com sucesso!");
 			} else {
-				// Cria nova
-				await api.post("/sale", payload);
+				await api.post("/product", product);
 				alert("Produto criado com sucesso!");
 			}
 
-			navigate("/sales");
+			navigate("/product");
 		} catch (err) {
 			console.error(err);
 			alert("Erro ao salvar");
@@ -81,11 +77,13 @@ export default function Form() {
 					<h2 className="title-page">{id ? "Editar Produto" : "Novo Produto"}</h2>
 					<p className="url-page">Dashboard / Produto</p>
 				</div>
+
 				<div className="col-9 d-flex justify-content-end gap-2">
 					<button onClick={handleSave} className="btn btn-info">
 						{id ? "Atualizar" : "Salvar"}
 					</button>
-					<NavLink to="/sales" className="btn btn-secondary">
+
+					<NavLink to="/products" className="btn btn-secondary">
 						Voltar
 					</NavLink>
 				</div>
@@ -96,98 +94,76 @@ export default function Form() {
 				<div className="col-12">
 					<div className="card user">
 						<div className="card-body">
-							<div className="row" >
-							<h5 className="mb-3">Atividades do Produto</h5>
+							<div className="row">
 
-							{/* Cliente */}
+								<h5 className="mb-3">Atividades do Produto</h5>
+                                 <div className="col-6 mb-3">
+                                    <label className="form-label">Nome</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        value={product.description}
+                                        onChange={(e) => handleChange("name", e.target.value)}
+                                        required
+                                    />
+								</div>
+								{/* Cliente / Código */}
 								<div className="col-6 mb-3">
-								<label className="form-label">Cliente</label>
-								<select
-									className="form-select"
-									value={sale.clienteId}
-									onChange={(e) =>
-										handleChange("clienteId", Number(e.target.value))
-									}
-								>
-									<option value={0}>Selecione um cliente</option>
-									<option value={1}>Edson</option>
-									<option value={2}>Luciano</option>
-								</select>
+									<label className="form-label">Código</label>
+									<input
+                                        type="text"
+                                        className="form-control"
+                                        value={product.cod}
+                                        onChange={(e) => handleChange("cod", e.target.value)}
+                                        required
+                                    />
+								</div>
+
+								{/* Tipo */}
+								<div className="col-6 mb-3">
+									<label className="form-label">Tipo</label>
+									<select
+										className="form-select"
+										value={product.type}
+										onChange={(e) =>
+											handleChange("type", Number(e.target.value))
+										}
+									>
+										<option value={0}>Tipos de Produtos</option>
+										<option value={1}>Refrigerantes</option>
+										<option value={2}>Salgados</option>
+									</select>
+								</div>
+
+								{/* Status */}
+								<div className="col-2 mb-3">
+									<label className="form-label">Status</label>
+									<select
+										className="form-select"
+										value={product.status}
+										onChange={(e) =>
+											handleChange("status", Number(e.target.value))
+										}
+									>
+										<option value={0}>Selecione</option>
+										<option value={1}>Ativo</option>
+										<option value={2}>Inativo</option>
+									</select>
+								</div>
+
+								{/* Observações */}
+								<div className="col-12 mb-3">
+									<label className="form-label">Descrição</label>
+									<textarea
+										className="form-control"
+										value={product.obs}
+										onChange={(e) => handleChange("obs", e.target.value)}
+										placeholder="Descrição / observações do produto..."
+									/>
+								</div>
+
 							</div>
-							<div className="col-6 mb-3">
-                            <label className="form-label">Tipo</label>
-                            <select
-                                className="form-select"
-                                value={sale.clienteId}
-                                onChange={(e) =>
-                                    handleChange("clienteId", Number(e.target.value))
-                                }
-                            >
-                                <option value={0}>Tipo de Produto</option>
-                                <option value={1}>B</option>
-                                <option value={2}>Comanda</option>
-                            </select>
-                        </div>
-                        <div className="col-2 mb-3">
-                            <label className="form-label">Status</label>
-                            <select
-                                className="form-select"
-                                value={sale.clienteId}
-                                onChange={(e) =>
-                                    handleChange("clienteId", Number(e.target.value))
-                                }
-                            >
-                                <option value={0}>Selecione</option>
-                                <option value={1}>Aberto</option>
-                                <option value={2}>Pendente</option>
-                                <option value={3}>Finalizado</option>
-                            </select>
-                        </div>
-							{/* Forma de Pagamento*/}
-                                <div className="col-4 mb-3">
-                                    <label className="form-label">Forma de Pagamento</label>
-                                    <select
-                                        className="form-select"
-                                        value={sale.paymentMethod}
-                                        onChange={(e) =>
-                                            handleChange("paymentMethod", Number(e.target.value))
-                                        }
-                                    >
-                                        <option value={0}>Selecione um cliente</option>
-                                        <option value={1}>Pix</option>
-                                        <option value={2}>Dinheiro</option>
-                                        <option value={3}>Credito</option>
-                                        <option value={4}>Debito</option>
-                                        <option value={5}>Fiado</option>
-                                    </select>
-                                </div>
-
-    {/* Parcelamento (só aparece se for crédito) */}
-    {sale.paymentMethod === 3 && (
-<div className="col-6 mb-3">
-<label className="form-label">Parcelamento</label>
-<select
-  className="form-select"
-  value={sale.installments || ""}
-  onChange={(e) => handleChange("installments", Number(e.target.value))}
->
-  <option value="">Selecione o número de parcelas</option>
-  <option value={2}>2x</option>
-  <option value={3}>3x</option>
-  <option value={4}>4x</option>
-</select>
-</div>
-)}
-
-							{/* Observações */}
-							<textarea
-								className="form-control"
-								value={sale.obs}
-								onChange={(e) => handleChange("obs", e.target.value)}
-								placeholder="Observações da venda..."
-							/>
 						</div>
-					</div>
 					</div>
 				</div>
 			</div>

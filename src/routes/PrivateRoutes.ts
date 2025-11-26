@@ -7,7 +7,8 @@ import UserEdit from '../pages/Users/Edit';
 import FilesUpload from '../pages/Files';
 import Sales from '../pages/Sales';
 import SalesEdit from '../pages/Sales/Edit';
-import Product from '../pages/Product';
+import Products from '../pages/Product';
+import ProductEdit from '../pages/Product/Edit';
 
 
 export type RouteItem = {
@@ -63,10 +64,18 @@ export const privateRoutes: RouteItem[] = [
     				name: 'Produtos',
     				path: '/products',
     				icon: 'product',
-    				component: Product,
+    				component: Products,
     				access: [0, 1],
     				visible: true,
     			},
+                {
+                    name: 'Editar Produtos',
+                    path: '/product/:id',
+                    icon: 'product',
+                    component: ProductEdit,
+                    access: [0, 1],
+                    visible: false,
+                },
     			{
     				name: 'Estoque',
     				path: '/user/:id',

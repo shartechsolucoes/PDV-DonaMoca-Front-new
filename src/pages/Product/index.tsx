@@ -4,17 +4,17 @@ import { api } from "../../api";
 import { LuPencilLine, LuTrash2 } from "react-icons/lu";
 import "./index.css";
 
-type SaleType = {
+type Type = {
 	id: number;
-	clienteId: number;
+	cod: number;
+	name: string;
+	type: string;
+	value: string;
 	createAt: string;
-	updateAt: string;
-	deleteAt: string;
-	obs: string;
 };
 
 export default function Sales() {
-	const [sales, setSales] = useState<SaleType[]>([]);
+	const [products, setProducts] = useState<Type[]>([]);
 	const [loading, setLoading] = useState(true);
 
 	// Carrega a lista de Produtos
@@ -22,7 +22,7 @@ export default function Sales() {
 		try {
 			setLoading(true);
 			const response = await api.get("/products");
-			setSales(response.data);
+			setProducts(response.data);
 		} catch (err) {
 			console.error("Erro ao carregar:", err);
 			alert("Erro ao carregar");
@@ -40,9 +40,9 @@ export default function Sales() {
 		if (!window.confirm("Deseja realmente deletar este Produto ?")) return;
 
 		try {
-			await api.delete(`/sale/${id}`);
+			await api.delete(`/product/${id}`);
 			alert("deletada com sucesso!");
-			setSales((prev) => prev.filter((s) => s.id !== id));
+			setProducts((prev) => prev.filter((s) => s.id !== id));
 		} catch (err) {
 			console.error(err);
 			alert("Erro ao deletar");
@@ -67,7 +67,7 @@ export default function Sales() {
 				</div>
 				<div className="col-9 d-flex justify-content-end gap-2">
 					<NavLink
-						to="/sale/new"
+						to="/product/new"
 						className="btn btn-info"
 						style={{ height: "fit-content" }}
 					>
@@ -78,26 +78,26 @@ export default function Sales() {
 
 			{/* Lista de Produtos */}
 			<div className="row mt-3">
-				{sales.length === 0 && (
+				{products.length === 0 && (
 					<p className="text-center text-muted mt-3">Nenhuma item encontrado.</p>
 				)}
 
-				{sales.map((sale) => (
+				{products.map((product) => (
 					<div
 						className="col-6 col-md-4 col-lg-4 col-xl-3 col-xxl-2 mb-3"
-						key={sale.id}
+						key={products.id}
 					>
 						<div className="card h-100 rounded-4 shadow-sm">
 							<div className="m-3">
-								<h5 className="card-title">Produto #{sale.id}</h5>
+								<h5 className="card-title">Produto #{product.name}</h5>
 								<p className="card-text text-muted mb-2">
-									<b>Cliente ID:</b> {sale.clienteId}
+									<b>Codigo:</b> {product.cod}
 								</p>
-								<p className="card-text">{sale.obs || "Sem observações"}</p>
+								<p className="card-text">{product.obs || "Sem observações"}</p>
 
 								<div className="d-flex justify-content-between gap-2 mt-3">
 									<NavLink
-										to={`/sale/${sale.id}`}
+										to={`/product/${product.id}`}
 										className="btn btn-sm btn-outline-primary w-100 d-flex align-items-center justify-content-center gap-1"
 										title="Editar"
 									>
@@ -106,7 +106,7 @@ export default function Sales() {
 									<button
 										className="btn btn-sm btn-outline-danger w-50 d-flex align-items-center justify-content-center gap-1"
 										title="Deletar"
-										onClick={() => handleDelete(sale.id)}
+										onClick={() => handleDelete(product.id)}
 									>
 										<LuTrash2 /> Excluir
 									</button>
