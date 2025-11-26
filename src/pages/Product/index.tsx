@@ -89,7 +89,7 @@ export default function Sales() {
 					>
 						<div className="card h-100 rounded-4 shadow-sm">
 							<div className="m-3">
-								<h5 className="card-title">Produto #{product.name}</h5>
+								<h5 className="card-title">{product.name}</h5>
 								<p className="card-text text-muted mb-2">
 									<b>Codigo:</b> {product.cod}
 								</p>

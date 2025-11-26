@@ -12,7 +12,7 @@ type Type = {
 	description: string;
 	obs: string;
 	cost: string;
-	status?: number;
+	status: number;
 };
 
 export default function Form() {
@@ -57,12 +57,13 @@ export default function Form() {
 			if (id) {
 				await api.put(`/product/${id}`, product);
 				alert("Atualizada com sucesso!");
+				navigate(`/product/${id}`);
 			} else {
 				await api.post("/product", product);
 				alert("Produto criado com sucesso!");
+				navigate(`/products`);
 			}
 
-			navigate("/product");
 		} catch (err) {
 			console.error(err);
 			alert("Erro ao salvar");
@@ -80,7 +81,7 @@ export default function Form() {
 
 				<div className="col-9 d-flex justify-content-end gap-2">
 					<button onClick={handleSave} className="btn btn-info">
-						{id ? "Atualizar" : "Salvar"}
+						Salvar
 					</button>
 
 					<NavLink to="/products" className="btn btn-secondary">
@@ -102,7 +103,7 @@ export default function Form() {
                                     <input
                                         type="text"
                                         className="form-control"
-                                        value={product.description}
+                                        value={product.name}
                                         onChange={(e) => handleChange("name", e.target.value)}
                                         required
                                     />
@@ -114,7 +115,7 @@ export default function Form() {
                                         type="text"
                                         className="form-control"
                                         value={product.cod}
-                                        onChange={(e) => handleChange("cod", e.target.value)}
+                                        onChange={(e) => handleChange("cod", Number (e.target.value))}
                                         required
                                     />
 								</div>

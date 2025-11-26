@@ -76,6 +76,14 @@ export const privateRoutes: RouteItem[] = [
                     access: [0, 1],
                     visible: false,
                 },
+            {
+                    name: 'Editar Produtos',
+                    path: '/product/new',
+                    icon: 'product',
+                    component: ProductEdit,
+                    access: [0, 1],
+                    visible: false,
+                },
     			{
     				name: 'Estoque',
     				path: '/user/:id',
