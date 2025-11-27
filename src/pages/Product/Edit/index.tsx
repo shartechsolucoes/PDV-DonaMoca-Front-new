@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate, NavLink } from "react-router-dom";
 import { api } from "../../../api";
 import "./user.css";
+import ImageUpload from "../../../components/Image/upload.tsx";
 
 type Type = {
 	id: number;
@@ -11,6 +12,7 @@ type Type = {
 	value: string;
 	description: string;
 	obs: string;
+	imageId: number;
 	cost: string;
 	status: number;
 };
@@ -18,6 +20,7 @@ type Type = {
 export default function Form() {
 	const navigate = useNavigate();
 	const { id } = useParams<{ id?: string }>();
+	const token = localStorage.getItem("token") || "";
 
 	const [product, setProduct] = useState<Type>({
 		id: 0,
@@ -27,6 +30,7 @@ export default function Form() {
 		value: "",
 		description: "",
 		obs: "",
+		imageId: 0,
 		cost: "",
 		status: 0
 	});
@@ -164,6 +168,15 @@ export default function Form() {
 								</div>
 
 							</div>
+							<ImageUpload
+								imageId={product.imageId}
+								token={token}
+								onChange={(newId) => {
+									if (newId && Number(newId) !== product.imageId) {
+										handleChange("imageId", Number(newId));
+									}
+								}}
+							/>
 						</div>
 					</div>
 				</div>

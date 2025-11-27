@@ -39,7 +39,7 @@ export const privateRoutes: RouteItem[] = [
     			{
     				name: 'Vendas',
     				path: '/sales',
-    				icon: 'cart',
+    				icon: 'shopp',
     				component: Sales,
     				access: [0, 1],
     				visible: true,
@@ -47,7 +47,7 @@ export const privateRoutes: RouteItem[] = [
             {
                      name: 'Nova Vendas',
                      path: '/sale/new',
-                     icon: 'account',
+                     icon: 'shopp',
                      component: SalesEdit,
                      access: [0, 1],
                      visible: false,
@@ -63,7 +63,7 @@ export const privateRoutes: RouteItem[] = [
                             			{
     				name: 'Produtos',
     				path: '/products',
-    				icon: 'product',
+    				icon: 'products',
     				component: Products,
     				access: [0, 1],
     				visible: true,
@@ -84,14 +84,7 @@ export const privateRoutes: RouteItem[] = [
                     access: [0, 1],
                     visible: false,
                 },
-    			{
-    				name: 'Estoque',
-    				path: '/user/:id',
-    				icon: '',
-    				component: UserEdit,
-    				access: [0, 1],
-    				visible: true,
-    			},
+
             {
                     name: 'Clientes',
                     path: '/user/:id',

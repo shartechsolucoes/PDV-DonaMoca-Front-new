@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { api } from "../../api";
-import { LuPencilLine, LuTrash2 } from "react-icons/lu";
+import {LuChartBar, LuPencilLine, LuTrash2 } from "react-icons/lu";
 import "./index.css";
+import Thumbnail from "../../components/Image/thumbnail.tsx";
 
 type Type = {
 	id: number;
@@ -10,6 +11,8 @@ type Type = {
 	name: string;
 	type: string;
 	value: string;
+	imageId: number;
+	obs: string;
 	createAt: string;
 };
 
@@ -84,16 +87,31 @@ export default function Sales() {
 
 				{products.map((product) => (
 					<div
-						className="col-6 col-md-4 col-lg-4 col-xl-3 col-xxl-2 mb-3"
-						key={products.id}
+						className="col-12 mb-1"
+						key={product.id}
 					>
-						<div className="card h-100 rounded-4 shadow-sm">
-							<div className="m-3">
-								<h5 className="card-title">{product.name}</h5>
-								<p className="card-text text-muted mb-2">
-									<b>Codigo:</b> {product.cod}
-								</p>
-								<p className="card-text">{product.obs || "Sem observações"}</p>
+						<div className="card h-100 rounded-4">
+							<div className="m-2 d-flex gap-1 align-items-center justify-content-between">
+
+								<div className="d-flex gap-2">
+									<div className="rounded-3 overflow-hidden">
+										<Thumbnail image_id={product.imageId} width={70} height={70} />
+									</div>
+									<div>
+										<h5 className="card-title">{product.name}</h5>
+										<p className="card-text text-muted"><b>Codigo:</b> {product.cod}</p>
+										<p className="alert">{product.obs || "Sem observações"}</p>
+									</div>
+								</div>
+								<div>
+									<p>Estoque</p>
+									58
+								</div>
+								<div>
+									<p>Vendas</p>
+									58
+								</div>
+
 
 								<div className="d-flex justify-content-between gap-2 mt-3">
 									<NavLink

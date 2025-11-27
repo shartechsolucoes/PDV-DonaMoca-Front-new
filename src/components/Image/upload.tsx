@@ -3,24 +3,25 @@ import { useDropzone } from "react-dropzone";
 import { api } from "../../api";
 
 type ImageUploadProps = {
-    image_id?: string;
+    imageId?: number;
     token: string;
     initialLegend?: string;
-    onChange: (newImageId: string, newLegend: string) => void;
+    // ALTERADO: agora onChange recebe number para image_id
+    onChange: (newImageId: number, newLegend: string) => void;
 };
 
 export default function ImageUpload({
-                                        image_id: initialImageId,
+                                        imageId: initialImageId,
                                         token,
                                         initialLegend = "",
                                         onChange,
                                     }: ImageUploadProps) {
-    const [image_id, setImageId] = useState<string>(initialImageId || "");
+    // ALTERADO: image_id como number
+    const [imageId, setImageId] = useState<number>(initialImageId || 0);
     const [preview, setPreview] = useState<string>("");
     const [legend, setLegend] = useState<string>(initialLegend);
     const [loading, setLoading] = useState<boolean>(true);
 
-    // Função auxiliar para montar URL completa
     const getFullUrl = (url: string): string => {
         const baseURL = api.defaults.baseURL?.replace(/\/$/, "") || "";
         const imagePath = url.replace(/^\//, "");
@@ -29,9 +30,14 @@ export default function ImageUpload({
 
     // Atualiza valores se mudar props
     useEffect(() => {
-        setImageId(initialImageId || "");
+        if (initialImageId && initialImageId !== imageId) {
+            setImageId(initialImageId);
+        }
+    }, [initialImageId]);
+
+    useEffect(() => {
         setLegend(initialLegend);
-    }, [initialImageId, initialLegend]);
+    }, [initialLegend]);
 
     // Buscar imagem inicial
     useEffect(() => {
@@ -50,10 +56,14 @@ export default function ImageUpload({
 
                 if (data) {
                     const fullUrl = getFullUrl(data.url);
-                    setImageId(data.image_id.toString());
+
+                    // ALTERADO: setar number (não string)
+                    setImageId(data.image_id);
                     setPreview(fullUrl);
                     setLegend(data.legend || "");
-                    onChange(data.image_id.toString(), data.legend || "");
+
+                    // IMPORTANTE: não chamar onChange aqui para evitar loop
+                    // onChange(data.image_id, data.legend || "");
                 }
             } catch (err) {
                 console.error("Erro ao buscar imagem:", err);
@@ -63,7 +73,7 @@ export default function ImageUpload({
         };
 
         fetchImage();
-    }, [initialImageId, token, onChange]);
+    }, [initialImageId, token /* remove onChange para evitar loop */]);
 
     // Upload de imagem
     const uploadImage = async (file: File) => {
@@ -81,10 +91,14 @@ export default function ImageUpload({
 
             if (data?.image_id) {
                 const fullUrl = getFullUrl(data.url);
-                setImageId(data.image_id.toString());
+
+                // ALTERADO: usar number
+                setImageId(data.image_id);
                 setPreview(fullUrl);
                 setLegend(data.legend || "");
-                onChange(data.image_id.toString(), data.legend || "");
+
+                // DISPARAR onChange aqui (após upload feito pelo usuário)
+                onChange(data.image_id, data.legend || "");
             } else {
                 alert("Erro ao enviar imagem.");
             }
@@ -100,7 +114,7 @@ export default function ImageUpload({
         if (acceptedFiles.length > 0) {
             uploadImage(acceptedFiles[0]);
         }
-    }, []);
+    }, []); // não precisa onChange nem token aqui
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop,
@@ -108,8 +122,11 @@ export default function ImageUpload({
     });
 
     const handleLegendChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setLegend(e.target.value);
-        onChange(image_id, e.target.value);
+        const newLegend = e.target.value;
+        setLegend(newLegend);
+
+        // ALTERADO: passa number (image_id) para o pai
+        onChange(imageId, newLegend);
     };
 
     if (loading) return <p>Carregando imagem...</p>;

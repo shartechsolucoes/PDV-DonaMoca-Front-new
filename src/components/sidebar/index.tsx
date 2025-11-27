@@ -8,7 +8,9 @@ import {useEffect, useState} from 'react';
 import {LuBookOpen, LuBuilding,
 	LuChartNoAxesColumn, LuLayoutDashboard, LuNewspaper,
 	LuPlane,LuSquareUser, LuFile,
-	LuRocket, LuTags, LuTrophy, LuUsersRound, LuVote} from "react-icons/lu";
+	LuRocket, LuTags, LuTrophy, LuUsersRound, LuVote,
+    LuShoppingBasket,
+    LuCoffee} from "react-icons/lu";
 import {LiaConnectdevelop} from "react-icons/lia";
 
 export default function Sidebar() {
@@ -53,6 +55,10 @@ export default function Sidebar() {
 				return <LuFile className="menu-icon tf-icons" />;
 			case 'charts':
 				return <LuChartNoAxesColumn className="menu-icon tf-icons"/>;
+			case 'shopp':
+				return <LuShoppingBasket className="menu-icon tf-icons"/>;
+			case 'products':
+				return <LuCoffee className="menu-icon tf-icons"/>;
 			default:
 				return <LiaConnectdevelop className="menu-icon tf-icons" />;
 		}
@@ -78,8 +84,8 @@ export default function Sidebar() {
 					<div className="navbar-wrapper">
 						<div className="m-header">
 							<a className="b-brand" href="">
-								<LiaConnectdevelop />
-								<span>NOTUS</span>
+								<LuCoffee />
+								<span>DonaMoça</span>
 							</a>
 						</div>
 						<div className="navbar-content next-scroll"></div>

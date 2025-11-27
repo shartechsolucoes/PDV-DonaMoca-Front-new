@@ -76,43 +76,78 @@ export default function Sales() {
 				</div>
 			</div>
 
+			<div className="row">
+				<div className="col-3">
+					<div className="card">
+						<div className="card-body">
+							Total de vendas
+						</div>
+					</div>
+				</div>
+			</div>
+
 			{/* Lista de vendas */}
-			<div className="row mt-3">
+			<div className="row mt-1">
 				{sales.length === 0 && (
 					<p className="text-center text-muted mt-3">Nenhuma venda encontrada.</p>
 				)}
 
 				{sales.map((sale) => (
 					<div
-						className="col-6 col-md-4 col-lg-4 col-xl-3 col-xxl-2 mb-3"
+						className="col-12 mb-1"
 						key={sale.id}
 					>
-						<div className="card h-100 rounded-4 shadow-sm">
-							<div className="m-3">
-								<h5 className="card-title">Venda #{sale.id}</h5>
-								<p className="card-text text-muted mb-2">
-									<b>Cliente ID:</b> {sale.clienteId}
-								</p>
-								<p className="card-text">{sale.obs || "Sem observações"}</p>
+						<NavLink
+							to={`/sale/${sale.id}`}
+							className="text-decoration-none"
+							title="Editar"
+						>
 
+						<div className="card h-100 rounded-4">
+							<div className="m-1 d-flex align-items-center justify-content-between">
+								<div>
+									<h5 className="card-title">#{sale.id}</h5>
+									<p className="card-text text-muted mb-2">
+										<b>Cliente</b> {sale.clienteId}
+									</p>
+								</div>
+								<div>
+									<h5 className="card-title">Tipo de Venda</h5>
+									{sale.status}
+								</div>
+								<div>
+									<h5 className="card-title">Valor</h5>
+								</div>
+								<div>
+									<h5 className="card-title">Produtos</h5>
+
+								</div>
+								<div>
+									<h5 className="card-title">Status</h5>
+									{sale.status}
+								</div>
 								<div className="d-flex justify-content-between gap-2 mt-3">
-									<NavLink
-										to={`/sale/${sale.id}`}
-										className="btn btn-sm btn-outline-primary w-100 d-flex align-items-center justify-content-center gap-1"
-										title="Editar"
-									>
-										<LuPencilLine /> Editar
-									</NavLink>
-									<button
-										className="btn btn-sm btn-outline-danger w-50 d-flex align-items-center justify-content-center gap-1"
-										title="Deletar"
-										onClick={() => handleDelete(sale.id)}
-									>
-										<LuTrash2 /> Excluir
-									</button>
+									{/*<NavLink*/}
+									{/*	to={`/sale/${sale.id}`}*/}
+									{/*	className="btn btn-sm btn-outline-primary w-100 d-flex align-items-center justify-content-center gap-1"*/}
+									{/*	title="Editar"*/}
+									{/*>*/}
+									{/*	<LuPencilLine /> Editar*/}
+									{/*</NavLink>*/}
+									{/*<button*/}
+									{/*	className="btn btn-sm btn-outline-danger w-50 d-flex align-items-center justify-content-center gap-1"*/}
+									{/*	title="Deletar"*/}
+									{/*	onClick={() => handleDelete(sale.id)}*/}
+									{/*>*/}
+									{/*	<LuTrash2 /> Excluir*/}
+									{/*</button>*/}
 								</div>
 							</div>
+							<div>
+								<p className="card-text">{sale.obs || "Sem observações"}</p>
+							</div>
 						</div>
+						</NavLink>
 					</div>
 				))}
 			</div>

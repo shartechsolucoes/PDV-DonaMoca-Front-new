@@ -3,7 +3,7 @@
 :root {
     --primary-color: #252527;
     --primary-color-rgb: rgb(24, 24, 25);
-    --secundary-color: #288fc6;
+    --secundary-color: #fda067;
     --secundary-color-rgb: rgb(40, 144, 200);
     --color-text: #515050;
 
@@ -237,4 +237,12 @@ li{
 
 h1, h2, h3, h4, h5, h6{
     color: var(--color-text)!important;
+}
+.alert{
+    /*background: rgba(255, 113, 98, 0.55);*/
+    color: rgba(246, 65, 46, 0.65);
+    padding: 2px 4px 2px 4px!important;
+    font-size: 10px !important;
+    font-weight: bold;
+    margin: 0px;
 }
