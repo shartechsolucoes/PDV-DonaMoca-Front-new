@@ -100,83 +100,106 @@ export default function Form() {
 					<div className="card user">
 						<div className="card-body">
 							<div className="row">
+								<div className="col-8">
+									<div className="row">
 
-								<h5 className="mb-3">Atividades do Produto</h5>
-                                 <div className="col-6 mb-3">
-                                    <label className="form-label">Nome</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        value={product.name}
-                                        onChange={(e) => handleChange("name", e.target.value)}
-                                        required
-                                    />
-								</div>
-								{/* Cliente / Código */}
-								<div className="col-6 mb-3">
-									<label className="form-label">Código</label>
-									<input
-                                        type="text"
-                                        className="form-control"
-                                        value={product.cod}
-                                        onChange={(e) => handleChange("cod", Number (e.target.value))}
-                                        required
-                                    />
-								</div>
+										<div className="col-2 mb-3">
+											<label className="form-label">Código</label>
+											<input
+												type="text"
+												className="form-control"
+												value={product.cod}
+												onChange={(e) => handleChange("cod", Number (e.target.value))}
+												required
+											/>
+										</div>
+										<div className="col-10 mb-3">
+											<label className="form-label">Nome</label>
+											<input
+												type="text"
+												className="form-control"
+												value={product.name}
+												onChange={(e) => handleChange("name", e.target.value)}
+												required
+											/>
+										</div>
+										<div className="col-4 mb-3">
+											<label className="form-label">Valor</label>
+											<input
+												type="text"
+												className="form-control"
+												value={product.value}
+												onChange={(e) => handleChange("value", e.target.value)}
+												required
+											/>
+										</div>
 
-								{/* Tipo */}
-								<div className="col-6 mb-3">
-									<label className="form-label">Tipo</label>
-									<select
-										className="form-select"
-										value={product.type}
-										onChange={(e) =>
-											handleChange("type", Number(e.target.value))
-										}
-									>
-										<option value={0}>Tipos de Produtos</option>
-										<option value={1}>Refrigerantes</option>
-										<option value={2}>Salgados</option>
-									</select>
-								</div>
+										{/* Tipo */}
+										<div className="col-4 mb-3">
+											<label className="form-label">Tipo</label>
+											<select
+												className="form-select"
+												value={product.type}
+												onChange={(e) =>
+													handleChange("type", Number(e.target.value))
+												}
+											>
+												<option value={0}>Tipos de Produtos</option>
+												<option value={1}>Refrigerantes</option>
+												<option value={2}>Salgados</option>
+											</select>
+										</div>
 
-								{/* Status */}
-								<div className="col-2 mb-3">
-									<label className="form-label">Status</label>
-									<select
-										className="form-select"
-										value={product.status}
-										onChange={(e) =>
-											handleChange("status", Number(e.target.value))
-										}
-									>
-										<option value={0}>Selecione</option>
-										<option value={1}>Ativo</option>
-										<option value={2}>Inativo</option>
-									</select>
-								</div>
+										{/* Status */}
+										<div className="col-4 mb-3">
+											<label className="form-label">Status</label>
+											<select
+												className="form-select"
+												value={product.status}
+												onChange={(e) =>
+													handleChange("status", Number(e.target.value))
+												}
+											>
+												<option value={0}>Selecione</option>
+												<option value={1}>Ativo</option>
+												<option value={2}>Inativo</option>
+											</select>
+										</div>
 
-								{/* Observações */}
-								<div className="col-12 mb-3">
-									<label className="form-label">Descrição</label>
-									<textarea
-										className="form-control"
-										value={product.obs}
-										onChange={(e) => handleChange("obs", e.target.value)}
-										placeholder="Descrição / observações do produto..."
+										{/* Observações */}
+										<div className="col-12 mb-3">
+											<label className="form-label">Descrição</label>
+											<textarea
+												className="form-control"
+												value={product.description}
+												onChange={(e) => handleChange("description", e.target.value)}
+												placeholder="Descrição / observações do produto..."
+											/>
+										</div>
+										<div className="col-12 mb-3">
+											<label className="form-label">OBS</label>
+											<textarea
+												className="form-control"
+												value={product.obs}
+												onChange={(e) => handleChange("obs", e.target.value)}
+												placeholder="Descrição / observações do produto..."
+											/>
+										</div>
+									</div>
+								</div>
+								<div className="col-4">
+									<ImageUpload
+										imageId={product.imageId}
+										token={token}
+										onChange={(newId) => {
+											if (newId && Number(newId) !== product.imageId) {
+												handleChange("imageId", Number(newId));
+											}
+										}}
 									/>
 								</div>
-
 							</div>
-							<ImageUpload
-								imageId={product.imageId}
-								token={token}
-								onChange={(newId) => {
-									if (newId && Number(newId) !== product.imageId) {
-										handleChange("imageId", Number(newId));
-									}
-								}}
-							/>
+
 						</div>
 					</div>
 				</div>
